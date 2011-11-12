@@ -31,9 +31,9 @@ def partial_decorator(decorator, target_arg):
 
 def vectorize(func):
     def vectorized_func(arg):
-        if isinstance(arg, list):
-            return list(map(func, arg))
-        elif hasattr(arg, '') and not isinstance(arg, str):
+        if isinstance(arg, (list, tuple)):
+            return type(arg)(map(func, arg))
+        elif hasattr(arg, '__iter__') and not isinstance(arg, str):
             return map(func, arg)
         else:
             return func(arg)
@@ -42,7 +42,7 @@ def vectorize(func):
 
 _CompiledRegexType = type(re.compile(""))
 
-def works_with_compiled_regex(func):
+def works_with_string_regex(func):
     def decorated_func(regex):
         if isinstance(regex, _CompiledRegexType):
             return re.compile(func(regex.pattern))
@@ -53,7 +53,7 @@ def works_with_compiled_regex(func):
 
 def cache_iterable_argument(func):
     def decorated_func(arg):
-        if isinstance(arg, list):
+        if isinstance(arg, (list, tuple)):
             return func(arg)
         else:
             return func(list(arg))

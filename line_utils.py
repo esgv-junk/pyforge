@@ -51,7 +51,7 @@ def dedented_by(line, amount):
         return map(lambda l: dedented_by(l, amount),
                    line) 
 
-@works_with_line_list(0, 'lines')
+@partial_decorator(works_with_line_list, (0, 'lines'))
 def get_min_indent(lines, blank_line_indent=sys.maxsize):
     def get_custom_indent(line):
         if not is_blank(line):

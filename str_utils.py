@@ -1,13 +1,9 @@
 import itertools, re
-from dryad.utils.re_utils import *
+from pyforge.re_utils import *
 
 
 def is_char(s):
-    # BUG: is duplicated in re_utils!
     return len(s) == 1
-
-def make_indent(indent_level):
-    return '    ' * indent_level
 
 def reversed_dict(dict_):
     result = {}
