@@ -24,3 +24,6 @@ def descaped(string, descape_dict):
     return multiple_replace(string, descape_dict)
 
 escaped_text_re = r'(?:[^\\]|\\.)+?'
+
+def to_id(string):
+    return re.sub('[^a-zA-Z\-_]', '_', string)
