@@ -18,6 +18,11 @@ def multiple_replace(string, replace_dict):
         string
     )
     
+def multiple_replace_re(string, replace_list):
+    for match_re, replace_str in replace_list:
+        string = re.sub(match_re, replace_str, string)
+    return string
+    
 escaped_text_re = r'(?:[^\\]|\\.)+?'
 
 def to_id(string):
