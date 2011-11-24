@@ -50,12 +50,12 @@ def get_indent(line):
     return result 
 
 
-@partial_decorator(vectorize, (0, 'line'))
+@partial(vectorize, (0, 'line'))
 def dedented_by(line, amount):
     return line[min(amount, get_indent(line)):]
 
 
-@partial_decorator(works_with_line_list, (0, 'lines'))
+@partial(works_with_line_list, (0, 'lines'))
 def get_min_indent(lines, blank_line_indent=sys.maxsize):
     
     def get_custom_indent(line):

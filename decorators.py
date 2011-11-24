@@ -1,6 +1,6 @@
 import re
 
-def partial_decorator(decorator, target_arg):
+def partial(decorator, target_arg):
     target_pos, target_name = target_arg
     
     def new_decorator(func):
@@ -69,5 +69,12 @@ def works_with_line_list(func):
         
     return decorated_func
 
-    
-    
+def works_with_module_dict(func):
+    def decorated_func(module):
+        if hasattr(module, '__getitem__'):
+            return func(module)
+        else:
+            return func(module.__dict__)
+        
+    return decorated_func
+
