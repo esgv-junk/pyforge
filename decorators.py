@@ -63,7 +63,7 @@ def cache_iterable_argument(func):
 def works_with_line_list(func):
     def decorated_func(lines):
         if isinstance(lines, str):
-            return func(lines.split('\n'))
+            return func(lines.splitlines())
         else:
             return func(lines)
         

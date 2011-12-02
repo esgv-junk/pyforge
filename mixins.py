@@ -16,4 +16,6 @@ def get_objects_names(module_dict, types, include_private=False):
             list_name[0:2] != '__'
         )
     ]
-            
+         
+def import_module(module_name):
+    return __import__(module_name, fromlist=[module_name])   

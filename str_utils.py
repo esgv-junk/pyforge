@@ -1,5 +1,6 @@
 import itertools, re
 from pyforge.re_utils import *
+from pyforge.iter_utils import *
 
 def is_char(s):
     return len(s) == 1
@@ -46,3 +47,11 @@ def transliterate(string):
 def to_id(string):
     string = transliterate(string)
     return re.sub('[^a-zA-Z\-_]', '_', string)
+
+def split_string(string, split_positions):
+    split_positions = itertools.chain([-1], split_positions, [len(string)])
+    return (
+        string[begin+1:end]
+        for (begin, end) in 
+            group_k_forward(split_positions, lookahead=1)
+    )

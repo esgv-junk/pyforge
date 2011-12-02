@@ -1,5 +1,5 @@
 import itertools, sys
-from pyforge.decorators import * 
+from pyforge.decorators import *
 
 # Working with blank lines
 
