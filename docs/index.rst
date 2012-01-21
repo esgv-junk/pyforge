@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to pyforge's documentation!
-===================================
+Welcome to pyforge documentation!
+=================================
 
 Pyforge is general-purpose python library.
 
