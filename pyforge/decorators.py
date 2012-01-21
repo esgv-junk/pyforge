@@ -77,4 +77,5 @@ def works_with_module_dict(func):
             return func(module.__dict__)
         
     return decorated_func
+    
 

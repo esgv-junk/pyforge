@@ -1,5 +1,5 @@
 import itertools, re
-from pyforge.decorators import *
+from pyforge.decorators import cache_iterable_argument, works_with_string_regex
 
 @cache_iterable_argument
 def make_strings_re(string_list):
@@ -7,7 +7,7 @@ def make_strings_re(string_list):
         return len(s) == 1
     
     chars = map(re.escape, filter(is_char, string_list))
-    strings = map(re.escape, itertools.filterfalse(is_char, string_list))
+    strings = map(re.escape, filter(lambda c: not is_char(c), string_list))
     
     chars_re = '[' + ''.join(chars) + ']'
     if chars_re == '[]':

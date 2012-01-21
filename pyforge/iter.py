@@ -9,12 +9,14 @@ def eat(seq, n=None):
         
 def group_k_forward(seq, lookahead=1, end_padding=None):
     safe_seq = seq
-    if end_padding is not None:
+    if not (end_padding is None):
         safe_seq = itertools.chain(
             seq, 
             itertools.repeat(end_padding, lookahead)
         )
+        
     context = itertools.tee(safe_seq, lookahead + 1)
-    [eat(context[i], i) for i in range(lookahead + 1)]
+    for i in range(lookahead + 1):
+        eat(context[i], i)
     return zip(*context)
 

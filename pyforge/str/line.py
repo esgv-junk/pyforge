@@ -1,5 +1,6 @@
 import itertools, sys
-from pyforge.decorators import *
+from pyforge.decorators import \
+    works_with_line_list, cache_iterable_argument, partial, vectorize
 
 # Working with blank lines
 
