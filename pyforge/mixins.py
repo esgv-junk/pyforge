@@ -18,7 +18,9 @@ def get_objects_names(module_dict, types, include_private=False):
     ]
          
 def import_module(module_name):
-    return __import__(module_name, fromlist=[module_name])
+    # 3to2 fix
+    # added bytes(), so it would translate to str()
+    return __import__(module_name, fromlist=[bytes(module_name)])
     
 import_cache = {}
 
