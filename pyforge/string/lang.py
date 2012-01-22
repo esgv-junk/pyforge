@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 
-from pyforge.str import multiple_replace
+from pyforge.string import multiple_replace
 
 transliterations = {
     'а': 'a' , 'б': 'b' , 'в': 'v'  , 'г': 'g', 'д': 'd', 'е': 'e',

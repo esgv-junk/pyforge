@@ -1,5 +1,5 @@
 import re, collections
-from pyforge.str.lang import transliterate
+from pyforge.string.lang import transliterate
 
 class UniqueIdDispatcher:
     def __init__(self):

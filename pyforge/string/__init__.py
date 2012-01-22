@@ -1,6 +1,6 @@
 import itertools, re
 from pyforge.iter import group_k_forward
-from pyforge.str.regexp import make_strings_re
+from pyforge.string.regexp import make_strings_re
 
 def is_char(s):
     return len(s) == 1
