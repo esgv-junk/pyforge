@@ -5,14 +5,13 @@ from pyforge.str.regexp import make_strings_re
 def is_char(s):
     return len(s) == 1
 
-class DictIsNotReversable(Exception):
-    pass
-
 def reversed_dict(dict_):
     result = {}
     for k, v in dict_.items():
         if v in result:
-            raise DictIsNotReversable("Value {0} encountered twice".format(v)) 
+            raise ValueError(
+                "Dict is not reversable: value {0} encountered twice".format(v)
+            ) 
         result[v] = k
     return result
 

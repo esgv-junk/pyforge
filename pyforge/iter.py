@@ -1,7 +1,14 @@
 import itertools
 import collections
 
+
 def eat(seq, n=None):
+    """
+    Consume iterator at C speed.
+    
+    Taken from ``itertools`` recipes.
+    
+    """
     if n is None:
         collections.deque(seq, maxlen=0)
     else:
