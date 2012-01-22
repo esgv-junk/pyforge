@@ -1,4 +1,6 @@
 *.pyc
 *.pyo
+.project
+.pydevproject
 .settings
 docs/html
