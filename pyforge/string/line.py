@@ -7,7 +7,6 @@ from pyforge.decorators import \
 def is_blank(line):
     return not bool(line.strip())
 
-
 @works_with_line_list
 @cache_iterable_argument
 def blank_lines_stripped_start(lines):
@@ -19,7 +18,6 @@ def blank_lines_stripped_start(lines):
         first_line += 1
     
     return lines[first_line:]
-
 
 @works_with_line_list
 @cache_iterable_argument
@@ -33,12 +31,8 @@ def blank_lines_stripped_end(lines):
         
     return lines[:last_line+1]
 
-
-@works_with_line_list
-@cache_iterable_argument
 def blank_lines_stripped(lines):
     return blank_lines_stripped_start(blank_lines_stripped_end(lines))
-
 
 
 # Working with indent
@@ -54,7 +48,6 @@ def get_indent(line):
 @partial(vectorize, (0, 'line'))
 def dedented_by(line, amount):
     return line[min(amount, get_indent(line)):]
-
 
 @partial(works_with_line_list, (0, 'lines'))
 def get_min_indent(lines, blank_line_indent=sys.maxsize):

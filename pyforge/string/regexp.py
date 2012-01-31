@@ -24,7 +24,7 @@ def regex_to_string(regex):
 
 @works_with_string_regex
 def make_exact(regex):
-    return '^(?:{regex})$'.format(regex=regex)
+    return '^(?:{0})$'.format(regex)
 
 @works_with_string_regex
 def capture_groups_removed(regex):

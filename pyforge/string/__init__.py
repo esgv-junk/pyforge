@@ -5,19 +5,21 @@ from pyforge.string.regexp import make_strings_re
 def is_char(s):
     return len(s) == 1
 
-def reversed_dict(dict_):
+def inversed_dict(dict_):
     result = {}
     for k, v in dict_.items():
         if v in result:
             raise ValueError(
-                "Dict is not reversable: value {0} encountered twice".format(v)
+                "Dict is not inversable: value {0} encountered twice".format(v)
             ) 
         result[v] = k
     return result
 
 def multiple_replace(string, replace_dict):
     return re.sub(
-        make_strings_re(replace_dict.keys()),
+        make_strings_re(
+            sorted(replace_dict.keys(), key=len, reverse=True)
+        ),
         lambda match_obj: replace_dict[match_obj.group(0)],
         string
     )

@@ -77,5 +77,15 @@ def works_with_module_dict(func):
             return func(module.__dict__)
         
     return decorated_func
-    
+
+def cache(func):
+    cache = {}
+
+    def decorated_func(*args):
+        nonlocal cache
+        if not (args in cache):
+            cache[args] = func(*args)
+        return cache[args]
+
+    return decorated_func
 

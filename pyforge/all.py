@@ -10,7 +10,9 @@ command. Eg.::
     
 """
 
+
 from pyforge.decorators import *
+from pyforge.io         import *
 from pyforge.iter       import *
 from pyforge.mixins     import *
 

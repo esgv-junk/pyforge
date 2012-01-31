@@ -1,5 +1,8 @@
 # -*- coding: utf8 -*-
 
+from os.path import join
+import re
+import hyphenator
 from pyforge.string import multiple_replace
 
 transliterations = {
@@ -20,3 +23,20 @@ def transliterate(string):
     
     string = multiple_replace(string, transliterations)
     return multiple_replace(string, upper_transliterations)
+
+hyphen_dict_base = hyphenator.__path__[0]
+_hyphenators = [
+    hyphenator.Hyphenator(join(hyphen_dict_base, 'hyph_ru_RU.dic'))
+]
+
+def hyphenate_word(word, hyphen='-'):
+    for hyphenator in _hyphenators:
+        word = hyphenator.inserted(word, hyphen)
+    return word
+
+def hyphenate(text, hyphen='-'):
+    return re.sub(
+        '\w+',
+        lambda match_obj: hyphenate_word(match_obj.group(0), hyphen),
+        text
+    )
