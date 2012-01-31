@@ -1,5 +1,3 @@
-import re
-
 def partial(decorator, target_arg):
     target_pos, target_name = target_arg
     
@@ -39,17 +37,6 @@ def vectorize(func):
             return func(arg)
         
     return vectorized_func
-
-_CompiledRegexType = type(re.compile(""))
-
-def works_with_string_regex(func):
-    def decorated_func(regex):
-        if isinstance(regex, _CompiledRegexType):
-            return re.compile(func(regex.pattern))
-        else:
-            return func(regex)
-         
-    return decorated_func
 
 def cache_iterable_argument(func):
     def decorated_func(arg):

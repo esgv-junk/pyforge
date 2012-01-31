@@ -1,5 +1,16 @@
-import itertools, re
-from pyforge.decorators import cache_iterable_argument, works_with_string_regex
+import re
+from pyforge.decorators import cache_iterable_argument
+
+_CompiledRegexType = type(re.compile(""))
+
+def works_with_string_regex(func):
+    def decorated_func(regex):
+        if isinstance(regex, _CompiledRegexType):
+            return re.compile(func(regex.pattern))
+        else:
+            return func(regex)
+
+    return decorated_func
 
 @cache_iterable_argument
 def make_strings_re(string_list):
